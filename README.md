@@ -1,6 +1,12 @@
 Higher Order Spectrum Estimation toolkit
 ======
 
+# Install
+``` bash
+cd spectrum
+python setup.py install
+```
+
 # Contents
 
 ## Bicoherence

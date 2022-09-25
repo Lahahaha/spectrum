@@ -7,7 +7,7 @@ from scipy.signal import convolve2d
 import scipy.io as sio
 import matplotlib.pyplot as plt
 
-from ..tools import *
+from spectrum.tools import *
 
 
 def bispectrumdx(x, y, z, nfft=None, wind=None, nsamp=None, overlap=None):

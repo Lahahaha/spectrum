@@ -6,7 +6,7 @@ from scipy.linalg import hankel
 import scipy.io as sio
 import matplotlib.pyplot as plt
 
-from ..tools import *
+from spectrum.tools import *
 
 
 def bicoherence(y, nfft=None, wind=None, nsamp=None, overlap=None):
