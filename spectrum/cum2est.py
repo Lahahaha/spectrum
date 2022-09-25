@@ -36,11 +36,11 @@ def cum2est(y, maxlag, nsamp, overlap, flag):
   ind = np.arange(nsamp)
   y = y.ravel(order='F')
 
-  for i in xrange(nrecord):
+  for i in range(nrecord):
     x = y[ind]
     x = x - np.mean(x)
 
-    for k in xrange(maxlag+1):
+    for k in range(maxlag+1):
       y_cum[k] = y_cum[k] + np.dot(x[0:nsamp-k].T, x[k:nsamp])
 
     ind = ind + int(nadvance)

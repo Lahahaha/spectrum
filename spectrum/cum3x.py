@@ -71,7 +71,7 @@ def cum3x(x, y, z, maxlag=0, nsamp=0, overlap=0, flag='biased', k1=0):
 
   ind = np.arange(nsamp)
 
-  for k in xrange(nrecs):
+  for k in range(nrecs):
     xs = x[ind]
     xs = xs - np.mean(xs)
     ys = y[ind]
@@ -85,7 +85,7 @@ def cum3x(x, y, z, maxlag=0, nsamp=0, overlap=0, flag='biased', k1=0):
 
     y_cum[zlag] = y_cum[zlag] + np.dot(u.T, ys)
 
-    for m in xrange(1, maxlag+1):
+    for m in range(1, maxlag+1):
       y_cum[zlag-m] = y_cum[zlag-m] + np.dot(u[m:nsamp].T, ys[0:nsamp-m])
       y_cum[zlag+m] = y_cum[zlag+m] + np.dot(u[0:nsamp-m].T, ys[m:nsamp])
 

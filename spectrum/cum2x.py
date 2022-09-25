@@ -59,7 +59,7 @@ def cum2x(x, y, maxlag=0, nsamp=0, overlap=0, flag='biased'):
     scale = np.ones([2*maxlag+1, 1]) / scale
 
   ind = np.arange(nsamp).T
-  for k in xrange(nrecs):
+  for k in range(nrecs):
     xs = x[ind].ravel(order='F')
     xs = xs - np.mean(xs)
     ys = y[ind].ravel(order='F')
@@ -67,7 +67,7 @@ def cum2x(x, y, maxlag=0, nsamp=0, overlap=0, flag='biased'):
 
     y_cum[zlag] = y_cum[zlag] + np.dot(xs, ys)
 
-    for m in xrange(1, maxlag+1):
+    for m in range(1, maxlag+1):
       y_cum[zlag-m] = y_cum[zlag-m] + np.dot(xs[m:nsamp].T, ys[0:nsamp-m])
       y_cum[zlag+m] = y_cum[zlag+m] + np.dot(xs[0:nsamp-m].T, ys[m:nsamp])
 

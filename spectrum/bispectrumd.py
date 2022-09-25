@@ -130,7 +130,7 @@ def bispectrumd(y, nfft=None, wind=None, nsamp=None, overlap=None):
   locseg = np.arange(nsamp).transpose()
   y = y.ravel(order='F')
 
-  for krec in xrange(nrecs):
+  for krec in range(nrecs):
     xseg = y[locseg].reshape(1,-1)
     Xf = np.fft.fft(xseg - np.mean(xseg), nfft) / nsamp
     CXf = np.conjugate(Xf).ravel(order='F')

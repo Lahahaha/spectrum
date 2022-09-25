@@ -81,7 +81,7 @@ def cum4x(w, x, y, z, maxlag=0, nsamp=0, overlap=0, flag='biased', k1=0, k2=0):
   ind = np.arange(nsamp)
 
   print (nrecs)
-  for i in xrange(nrecs):
+  for i in range(nrecs):
     tmp = y_cum * 0
     R_zy   = 0
     R_wy = 0
@@ -123,7 +123,7 @@ def cum4x(w, x, y, z, maxlag=0, nsamp=0, overlap=0, flag='biased', k1=0, k2=0):
       R_zy = R_zy + np.dot(zs[-k1+k2:nsamp].T, ys[0:nsamp-k2+k1])
 
     tmp[zlag] = tmp[zlag] + np.dot(ziv.T, xs)
-    for k in xrange(1, maxlag+1):
+    for k in range(1, maxlag+1):
       tmp[zlag-k] = tmp[zlag-k] + np.dot(ziv[k:nsamp].T, xs[0:nsamp-k])
       tmp[zlag+k] = tmp[zlag+k] + np.dot(ziv[0:nsamp-k].T, xs[k:nsamp])
 

@@ -83,7 +83,7 @@ def bicoherence(y, nfft=None, wind=None, nsamp=None, overlap=None):
   ind  = np.arange(nsamp)
   y = y.ravel(order='F')
 
-  for k in xrange(nrecs):
+  for k in range(nrecs):
     ys = y[ind]
     ys = (ys.reshape(1,-1) - np.mean(ys)) * wind
 

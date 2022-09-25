@@ -48,7 +48,7 @@ def cum3est(y, maxlag, nsamp, overlap, flag, k1):
     scale = np.ones([m2,n2]) / scale
 
   y = y.ravel(order='F')
-  for i in xrange(nrecord):
+  for i in range(nrecord):
     x = y[ind]
     x = x - np.mean(x)
     cx = np.conj(x)
@@ -64,7 +64,7 @@ def cum3est(y, maxlag, nsamp, overlap, flag, k1):
     # compute third-order cumulants
     y_cum[zlag] = y_cum[zlag] + np.dot(z.T, x)
 
-    for k in xrange(1,maxlag+1):
+    for k in range(1,maxlag+1):
       y_cum[zlag-k] = y_cum[zlag-k] + np.dot(z[k:nsamp].T, x[0:nsamp-k])
       y_cum[zlag+k] = y_cum[zlag+k] + np.dot(z[0:nsamp-k].T, x[k:nsamp])
 

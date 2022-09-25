@@ -91,7 +91,7 @@ def bicoherencex(w, x, y, nfft=None, wind=None, nsamp=None, overlap=None):
   x = x.ravel(order='F')
   y = y.ravel(order='F')
 
-  for k in xrange(nrecs):
+  for k in range(nrecs):
     ws = w[ind]
     ws = (ws - np.mean(ws)) * wind
     Wf = np.fft.fft(ws, nfft) / nsamp

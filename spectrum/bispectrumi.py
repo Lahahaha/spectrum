@@ -72,14 +72,14 @@ def bispectrumi(y, nlag=None, nsamp=None, overlap=None,
   y = y.ravel(order='F')
 
   s = 0
-  for k in xrange(nrecord):
+  for k in range(nrecord):
     x = y[ind].ravel(order='F')
     x = x - np.mean(x)
     ind = ind + int(nadvance)
 
-    for j in xrange(nlag+1):
+    for j in range(nlag+1):
       z = x[range(nsamp-j)] * x[range(j, nsamp)]
-      for i in xrange(j,nlag+1):
+      for i in range(j,nlag+1):
         Sum = np.dot(z[range(nsamp-i)].T, x[range(i,nsamp)])
         if flag == 'biased': Sum = Sum/nsamp
         else: Sum = Sum / (nsamp-i)
@@ -93,7 +93,7 @@ def bispectrumi(y, nlag=None, nsamp=None, overlap=None,
   c32 = np.zeros([nlag, nlag])
   c33 = np.zeros([nlag, nlag])
   c34 = np.zeros([nlag, nlag])
-  for i in xrange(nlag):
+  for i in range(nlag):
     x = c31[i:nlag, i]
     c32[nlag-1-i,0:nlag-i] = x.T
     c34[0:nlag-i, nlag-1-i] = x
@@ -114,7 +114,7 @@ def bispectrumi(y, nlag=None, nsamp=None, overlap=None,
   if wind != -1:
     indx = np.arange(-1*nlag, nlag+1).T
     window = window.reshape(-1,1)
-    for k in xrange(-nlag, nlag+1):
+    for k in range(-nlag, nlag+1):
       wcmat[:, k+nlag] = (cmat[:, k+nlag].reshape(-1,1) * \
               window[abs(indx-k)] * \
               window[abs(indx)] * \
