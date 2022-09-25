@@ -91,11 +91,11 @@ def bispectrumd(y, nfft=None, wind=None, nsamp=None, overlap=None):
     window = window.reshape(1,-1)
 
     if np.any(np.imag(window)) != 0:
-      print "1-D window has imaginary components: window ignored"
+      print ("1-D window has imaginary components: window ignored")
       window = 1
 
     if np.any(window) < 0:
-      print "1-D window has negative components: window ignored"
+      print ("1-D window has negative components: window ignored")
       window = 1
 
     lwind = np.size(window)
@@ -112,12 +112,12 @@ def bispectrumd(y, nfft=None, wind=None, nsamp=None, overlap=None):
     winsize = m
 
     if m != n:
-      print "2-D window is not square: window ignored"
+      print ("2-D window is not square: window ignored")
       window = 1
       winsize = m
 
     if m%2 == 0:
-      print "2-D window does not have odd length: window ignored"
+      print ("2-D window does not have odd length: window ignored")
       window = 1
       winsize = m
 
