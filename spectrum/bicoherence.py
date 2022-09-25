@@ -78,7 +78,7 @@ def bicoherence(y, nfft=None, wind=None, nsamp=None, overlap=None):
   bic = np.zeros([nfft, nfft])
   Pyy  = np.zeros([nfft,1])
 
-  mask = hankel(np.arange(nfft),np.array([nfft-1]+range(nfft-1)))
+  mask = hankel(np.arange(nfft), np.array([nfft-1] + np.array(range(nfft-1))))
   Yf12 = np.zeros([nfft,nfft])
   ind  = np.arange(nsamp)
   y = y.ravel(order='F')
