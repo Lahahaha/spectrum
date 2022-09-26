@@ -142,7 +142,7 @@ def bispectrumdx(x, y, z, nfft=None, wind=None, nsamp=None, overlap=None):
   y = y.ravel(order='F')
   z = z.ravel(order='F')
 
-  for krec in range(nrecs):
+  for krec in range(int(nrecs)):
     xseg = x[locseg].reshape(1,-1)
     yseg = y[locseg].reshape(1,-1)
     zseg = z[locseg].reshape(1,-1)

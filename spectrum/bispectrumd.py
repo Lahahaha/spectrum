@@ -111,12 +111,12 @@ def bispectrumd(y, nfft=None, wind=None, nsamp=None, overlap=None):
     winsize = m
 
     if m != n:
-      print ("2-D window is not square: window ignored")
+      print("2-D window is not square: window ignored")
       window = 1
       winsize = m
 
     if m%2 == 0:
-      print ("2-D window does not have odd length: window ignored")
+      print("2-D window does not have odd length: window ignored")
       window = 1
       winsize = m
 
@@ -129,7 +129,7 @@ def bispectrumd(y, nfft=None, wind=None, nsamp=None, overlap=None):
   locseg = np.arange(nsamp).transpose()
   y = y.ravel(order='F')
 
-  for krec in range(nrecs):
+  for krec in range(int(nrecs)):
     xseg = y[locseg].reshape(1,-1)
     Xf = np.fft.fft(xseg - np.mean(xseg), nfft) / nsamp
     CXf = np.conjugate(Xf).ravel(order='F')

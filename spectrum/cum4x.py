@@ -80,7 +80,7 @@ def cum4x(w, x, y, z, maxlag=0, nsamp=0, overlap=0, flag='biased', k1=0, k2=0):
   ind = np.arange(nsamp)
 
   print(nrecs)
-  for i in range(nrecs):
+  for i in range(int(nrecs)):
     tmp = y_cum * 0
     R_zy   = 0
     R_wy = 0

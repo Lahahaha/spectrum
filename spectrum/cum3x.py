@@ -70,7 +70,7 @@ def cum3x(x, y, z, maxlag=0, nsamp=0, overlap=0, flag='biased', k1=0):
 
   ind = np.arange(nsamp)
 
-  for k in range(nrecs):
+  for k in range(int(nrecs)):
     xs = x[ind]
     xs = xs - np.mean(xs)
     ys = y[ind]
