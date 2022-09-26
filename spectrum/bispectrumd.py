@@ -34,7 +34,7 @@ def bispectrumd(y, nfft=None, wind=None, nsamp=None, overlap=None):
 
   (ly, nrecs) = y.shape
   if ly == 1:
-    y = y.shape(1,-1)
+    y = y.reshape(1, -1)
     ly = nrecs
     nrecs = 1
 
