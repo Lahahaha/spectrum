@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import division
 import numpy as np
 from scipy.linalg import hankel
 import scipy.io as sio
@@ -55,7 +54,7 @@ def cum2x(x, y, maxlag=0, nsamp=0, overlap=0, flag='biased'):
   if flag == 'biased':
     scale = np.ones([nlags, 1])/nsamp
   else:
-    scale = make_arr((range(lx-maxlag, lx+1), range(lx-1, lx-maxlag-1, -1)), axis=1).T
+    scale = make_arr((list(range(lx-maxlag, lx+1)), list(range(lx-1, lx-maxlag-1, -1))), axis=1).T
     scale = np.ones([2*maxlag+1, 1]) / scale
 
   ind = np.arange(nsamp).T
@@ -84,8 +83,8 @@ def test():
   # The right results are:
   #           "biased": [--0.25719  -0.12011   0.35908   1.01378   0.35908  -0.12011  -0.25719]
   #           "unbiased": [-0.025190  -0.011753   0.035101   0.099002   0.035101  -0.011753  -0.025190]
-  print (cum2x(y, y, 3, 100, 0, "biased"))
-  print (cum2x(y, y, 3, 100, 0, "unbiased"))
+  print(cum2x(y, y, 3, 100, 0, "biased"))
+  print(cum2x(y, y, 3, 100, 0, "unbiased"))
 
 
 if __name__ == '__main__':

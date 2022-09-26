@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import division
 import numpy as np
 from scipy.linalg import hankel
 from scipy.signal import convolve2d
@@ -113,7 +112,7 @@ def bispectrumdx(x, y, z, nfft=None, wind=None, nsamp=None, overlap=None):
     lwind = np.size(window)
     w = window.ravel(order='F')
     # the full symmetric 1-D
-    windf = np.array(w[range(lwind-1, 0, -1) + [window]])
+    windf = np.array(w[list(range(lwind-1, 0, -1)) + [window]])
     window = np.array([window], np.zeros([lwind-1,1]))
     # w(m)w(n)w(m+n)
     opwind = (windf * np.transpose(windf)) * hankel(np.flipud(window), window)
@@ -137,7 +136,7 @@ def bispectrumdx(x, y, z, nfft=None, wind=None, nsamp=None, overlap=None):
 
   # accumulate triple products
   Bspec = np.zeros([nfft, nfft]) # the hankel mask (faster)
-  mask = hankel(np.arange(nfft),np.array([nfft-1]+range(nfft-1)))
+  mask = hankel(np.arange(nfft),np.array([nfft-1]+list(range(nfft-1))))
   locseg = np.arange(nsamp).transpose()
   x = x.ravel(order='F')
   y = y.ravel(order='F')
@@ -164,7 +163,7 @@ def bispectrumdx(x, y, z, nfft=None, wind=None, nsamp=None, overlap=None):
   if winsize > 1:
     lby2 = int((winsize-1)/2)
     Bspec = convolve2d(Bspec,opwind)
-    Bspec = Bspec[range(lby2+1,lby2+nfft+1), :][:, np.arange(lby2+1,lby2+nfft+1)]
+    Bspec = Bspec[list(range(lby2+1,lby2+nfft+1)), :][:, np.arange(lby2+1,lby2+nfft+1)]
 
 
   if nfft%2 == 0:

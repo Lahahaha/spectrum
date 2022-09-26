@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import division
 import numpy as np
 from scipy.linalg import hankel
 import scipy.io as sio
@@ -43,7 +42,7 @@ def cum3est(y, maxlag, nsamp, overlap, flag, k1):
     scale = np.ones([nlags, 1])/nsamp
   else:
     lsamp = nsamp - abs(k1)
-    scale = make_arr((range(lsamp-maxlag, lsamp+1), range(lsamp-1, lsamp-maxlag-1, -1)), axis=1).T
+    scale = make_arr((list(range(lsamp-maxlag, lsamp+1)), list(range(lsamp-1, lsamp-maxlag-1, -1))), axis=1).T
     (m2,n2) = scale.shape
     scale = np.ones([m2,n2]) / scale
 

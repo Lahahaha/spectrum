@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 
-from __future__ import division
 import numpy as np
 from scipy.linalg import hankel
 from scipy.signal import convolve2d
 import scipy.io as sio
 import matplotlib.pyplot as plt
 
-from spectrum.tools import *
+from tools import *
 
 np.set_printoptions(linewidth=120)
 
@@ -56,7 +55,7 @@ def bispectrumi(y, nlag=None, nsamp=None, overlap=None,
   # create the lag window
   Bspec = np.zeros([nfft, nfft])
   if wind == 0:
-    indx = np.array([range(1,nlag+1)]).T
+    indx = np.array([list(range(1,nlag+1))]).T
     window = make_arr((1, np.sin(np.pi*indx/nlag) / (np.pi*indx/nlag)), axis=0)
   else:
     window = np.ones([nlag+1,1])
@@ -72,15 +71,16 @@ def bispectrumi(y, nlag=None, nsamp=None, overlap=None,
   y = y.ravel(order='F')
 
   s = 0
-  for k in range(nrecord):
+  for k in range(int(nrecord)):
     x = y[ind].ravel(order='F')
     x = x - np.mean(x)
     ind = ind + int(nadvance)
 
     for j in range(nlag+1):
-      z = x[range(nsamp-j)] * x[range(j, nsamp)]
+      z = x[list(range(nsamp-j))] * x[list(range(j, nsamp))]
+
       for i in range(j,nlag+1):
-        Sum = np.dot(z[range(nsamp-i)].T, x[range(i,nsamp)])
+        Sum = np.dot(z[list(range(nsamp-i))].T, x[list(range(i,nsamp))])
         if flag == 'biased': Sum = Sum/nsamp
         else: Sum = Sum / (nsamp-i)
         c3[i,j] = c3[i,j] + Sum
